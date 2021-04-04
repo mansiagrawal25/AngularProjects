@@ -1,0 +1,50 @@
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+
+
+<div class="container">
+ <div class="row">
+  <div class="col-md-6">
+   <form [formGroup]="angForm" novalidate class="text-center border border-light p-5">
+      <div class="form-group">
+    <fieldset>
+      <legend class="text-center">Register </legend>
+     <div class="form-group">
+      <label for="firstname"><span class="req">* </span> Email: </label>
+      <input class="form-control" type="text" [(ngModel)]="user.username" name="username" id="txt" required
+       placeholder="Enter valid email address" formControlName="username"/>
+
+      <div id="errFirst"></div>
+     </div>
+            <div *ngIf="angForm.controls['username'].invalid && (angForm.controls['username'].dirty || angForm.controls['username'].touched)"
+               class="alert alert-danger">Email is required. </div>
+          <div class="form-group">
+           <label for="Password"><span class="req">* </span> Password:  </label>
+           <input required type="password" [(ngModel)]="user.password" name="password" id="password" class="form-control phone" maxlength="28" formControlName="password"
+            placeholder="Enter your password..." />
+          </div>
+         <div
+            *ngIf="angForm.controls['password'].invalid && (angForm.controls['password'].dirty || angForm.controls['password'].touched)"
+            class="alert alert-danger">Password is required. </div>
+      <label for="Password"><span class="req">* </span> {{errorMessage}} </label>
+     <div class="form-group">
+      <button  class="btn btn-primary" [disabled]="isLoading"  type="submit" name="submit_reg" value="Register" [disabled]="!angForm.valid" (click)="registerNow()"><i class="fa" [ngClass]="{'fa-spin fa-spinner': isLoading, 'fa-check': !isLoading}"></i>{{button}}</button>
+      
+     </div>
+   <div class="form-group">
+      <button class="btn btn-primary" [disabled]="isLoading" type="submit" name="submit_reg" value="Login"
+          (click)="login()"><i class="fa"
+            [ngClass]="{'fa-spin fa-spinner': isLoading, 'fa-check': !isLoading}"></i>Login</button>
+   
+   </div>
+    </fieldset>
+</div>
+   </form>
+
+  </div>
+
+ </div>
+</div>
+ 

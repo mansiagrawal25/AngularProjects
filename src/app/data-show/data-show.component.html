@@ -1,0 +1,72 @@
+
+
+<div class="container">
+ <!-- <h1>{{ data.flow}} {{data.pressure}}</h1> -->
+
+ <table class="styled-table table table-hover" >
+  <thead>
+  <tr >
+   <th>Flow</th>
+   <th>Pressure</th>
+   <th >Time Stamp <button class="btn btn-primary" (click)="sort()">sort</button></th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let data of Values | slice: (page-1) * pageSize : page * pageSize">
+   <td>{{data.flow}}</td>
+   <td>{{data.pressure}}</td>
+   <td>{{data.timeStamp}}</td>
+  </tr>
+  </tbody>
+ </table>
+<ngb-pagination [(page)]="page" [pageSize]="pageSize" [collectionSize]="Values.length" aria-label="Default pagination">
+  <ng-template ngbPaginationFirst>First</ng-template>
+  <ng-template ngbPaginationLast>Last</ng-template>
+  <ng-template ngbPaginationPrevious>Prev</ng-template>
+  <ng-template ngbPaginationNext>Next</ng-template>
+  <ng-template ngbPaginationEllipsis>...</ng-template>
+  <ng-template ngbPaginationNumber let-page>{{ page }}</ng-template>
+</ngb-pagination>
+
+
+
+<div>
+  <div>
+    <input [(ngModel)]="dataId" placeholder="Enter Id">
+    <button class="btn btn-primary" (click)="findByID()">find</button>
+  </div>
+  <div>
+<label> {{errorMessage}} </label>
+</div>
+ <table *ngIf="show" class="styled-table table table-hover">
+  <thead>
+   <tr>
+    <th>Id</th>
+    <th>Flow</th>
+    <th>Pressure</th>
+    <th>Time Stamp </th>
+   </tr>
+  </thead>
+  <tbody>
+   <tr >
+    <td>{{foundData.id}}</td>
+    <td>{{foundData.flow}}</td>
+    <td>{{foundData.pressure}}</td>
+    <td>{{foundData.timeStamp}}</td>
+   </tr>
+  </tbody>
+  
+ </table>
+   <!-- <ngb-pagination [(page)]="page" [pageSize]="pageSize" [collectionSize]="Values.length"></ngb-pagination>
+ -->
+
+
+
+
+<button class="btn btn-primary" (click)="viewChart()"> View Chart</button>
+<div class="">
+<app-chart class="chart" *ngIf="chartIsVisible" [showChart]="chartIsVisible" [dataObj]="Values" (closeChartEvent)="closeChart()">
+</app-chart>
+
+</div>
+</div>

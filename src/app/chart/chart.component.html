@@ -1,0 +1,14 @@
+<div class="container">
+  <button class="btn btn-success"(click)="closeChart()">close</button>
+  
+    <div style="display: block" class="popup card text-center">
+      <canvas baseChart
+              [datasets]="barChartData"
+              [labels]="barChartLabels"
+              [options]="barChartOptions"
+              [legend]="barChartLegend"
+              chartType="bar">
+      </canvas>
+    </div>
+</div>
+

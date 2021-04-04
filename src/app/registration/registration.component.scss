@@ -1,0 +1,59 @@
+body {
+  padding-top: 50px;
+  justify-content: center;
+}
+fieldset {
+  border: thin solid #ccc;
+  border-radius: 4px;
+  padding: 20px;
+  padding-left: 40px;
+  background: #fbfbfb;
+}
+legend {
+  color: #678;
+}
+.form-control {
+  width: 95%;
+  justify-content: center;
+  align-content: center;
+}
+label small {
+  color: #678 !important;
+}
+span.req {
+  color: maroon;
+  font-size: 112%;
+}
+@-webkit-keyframes btn {
+  0% {
+    -webkit-transform: rotate(0);
+    transform: rotate(0);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+@keyframes btn-ng-bs-rotation {
+  0% {
+    transform: rotate(0);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+.active {
+  border: 1px solid black;
+  padding: 1rem;
+  -webkit-animation: btn 2s infinite linear;
+  // -webkit-animation: btn-ng-bs-rotation 2s linear;
+  background-color: aqua;
+
+  cursor: pointer;
+}
+.not-active {
+  border: 1px solid black;
+  padding: 1rem;
+  cursor: pointer;
+  background-color: green;
+}

@@ -1,1 +1,167 @@
 /* You can add global styles to this file, and also import other style files */
+/* Add application styles & imports to this file! */
+@import "~bootstrap/dist/css/bootstrap.min.css";
+@keyframes example {
+  from {
+    margin-top: 100vh;
+  }
+  to {
+    margin-left: 0;
+  }
+}
+@-webkit-keyframes btn-ng-statusClass-rotation {
+  0% {
+    -webkit-transform: rotate(0);
+    transform: rotate(0);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+@-moz-keyframes btn-ng-bs-rotation {
+  0% {
+    -moz-transform: rotate(0);
+    transform: rotate(0);
+  }
+  100% {
+    -moz-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+@-o-keyframes btn-ng-bs-rotation {
+  0% {
+    -o-transform: rotate(0);
+    transform: rotate(0);
+  }
+  100% {
+    -o-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+@keyframes btn-ng-bs-rotation {
+  0% {
+    transform: rotate(0);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+.btn-ng-bs-animated .icons {
+  opacity: 0;
+  width: 0;
+  -webkit-transition: opacity 0.15s, width 0.15s;
+  -moz-transition: opacity 0.15s, width 0.15s;
+  -o-transition: opacity 0.15s, width 0.15s;
+  transition: opacity 0.15s, width 0.15s;
+}
+.btn-ng-bs-animated.is-active .icons {
+  opacity: 1;
+  width: 1em;
+}
+.statusClass.is-active .icons.pull-left {
+  margin-right: 0.4em;
+}
+.statusClass.is-active .icons.pull-right {
+  margin-left: 0.4em;
+}
+.statusClass.is-active .icons .icon-spinner {
+  -webkit-animation: btn-ng-bs-rotation 2s infinite linear;
+  -moz-animation: btn-ng-bs-rotation 2s infinite linear;
+  -o-animation: btn-ng-bs-rotation 2s infinite linear;
+  animation: btn-ng-bs-rotation 2s infinite linear;
+}
+
+$media-queries: (
+  tablet: (
+    breakpoint: "(min-width: 560px) and (max-width: 768px)",
+  ),
+  mobile: (
+    breakpoint: "(max-width: 560px)",
+  ),
+  desktop: (
+    breakpoint: "(min-width: 768px) and (max-width: 1280px)",
+  ),
+);
+
+@mixin media-query($size) {
+  @each $item, $value in $media-queries {
+    @if $item == $size {
+      @if map-get($value, breakpoint) != null {
+        @media only screen and #{map-get($value, breakpoint)} {
+          @content;
+        }
+      }
+    }
+  }
+}
+.styled-table {
+  border: solid 1px;
+  border-collapse: collapse;
+  margin: 25px 0;
+  font-size: 0.9em;
+  font-family: sans-serif;
+  min-width: 400px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+}
+.styled-table thead tr {
+  background-color: #009879;
+  color: #ffffff;
+  text-align: left;
+}
+.styled-table th,
+.styled-table td {
+  padding: 12px 15px;
+}
+.styled-table tbody tr {
+  border-bottom: 1px solid #dddddd;
+}
+
+.styled-table tbody tr:nth-of-type(even) {
+  background-color: #ffffff;
+}
+.styled-table tbody tr:nth-of-type(odd) {
+  background-color: #dddddd;
+}
+
+.styled-table tbody tr:last-of-type {
+  border-bottom: 2px solid #009879;
+}
+.styled-table tbody tr.active-row {
+  font-weight: bold;
+  color: #009879;
+}
+body {
+  background-color: #169ee4;
+  @include media-query(mobile) {
+    background-color: yellow;
+  }
+  @include media-query(tablet) {
+    background-color: lightgreen;
+  }
+  @include media-query(desktop) {
+    background-color: lightblue;
+  }
+}
+
+@import url(https://fonts.googleapis.com/css?family=Slabo+13px);
+
+html,
+body {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  margin: 0 auto;
+  justify-content: center;
+  text-align: center;
+  font-family: "Roboto", "Helvetica Neue", sans-serif;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
+  text-align: center;
+  margin-left: 250px;
+}

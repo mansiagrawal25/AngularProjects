@@ -1,0 +1,44 @@
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+
+
+<div class="container">
+ <div class="row">
+  <div class="col-md-6">
+   <form class="form-group  border border-light p-5" [formGroup]="angForm" novalidate>
+    <fieldset>
+     <legend class="text-center">Data</legend>
+
+
+
+     <div class="form-group">
+      <label for="flow"><span class="req">* </span> Flow: </label>
+      <input class="form-control" type="text" [(ngModel)]="data.flow"  name="flow" id="txt" required
+       placeholder="Enter valid flow" formControlName="flow" />
+      <div id="errFirst"></div>
+     </div>
+   <div
+      *ngIf="angForm.controls['flow'].invalid && (angForm.controls['flow'].dirty || angForm.controls['flow'].touched)"
+      class="alert alert-danger">Flow is required. </div>
+     <div class="form-group">
+      <label for="Pressure"><span class="req">* </span> Pressure: </label>
+      <input required type="text" [(ngModel)]="data.pressure" name="pressure" id="pressure"
+       class="form-control phone" maxlength="28" placeholder="Enter your Pressure" formControlName="pressure"/>
+     </div>
+
+<div *ngIf="angForm.controls['pressure'].invalid && (angForm.controls['pressure'].dirty || angForm.controls['pressure'].touched)"
+   class="alert alert-danger">Pressure is required. </div>
+    <label for="pressure"><span class="req">* </span> {{errorMessage}} </label>
+     <div class="form-group">
+      <button [disabled]="!angForm.valid" class="btn btn-primary" [disabled]="isLoading" type="submit" name="submit_reg"
+        value="Submit" (click)="submit()">
+        <i class="fa" [ngClass]="{'fa-spin fa-spinner': isLoading, 'fa-check': !isLoading}"></i>{{button}}</button>
+     </div>
+    </fieldset>
+   </form>
+  </div>
+
+ </div>
+</div>
